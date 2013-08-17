@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "fitnesse",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,6 +7,16 @@
   },
   "dependencies": {
     "express": "3.3.5",
-    "jade": "*"
+    "jade": "*",
+    "async": "0.2.x",
+    "creole": "0.0.x",
+    "html": "0.0.x",
+    "mstring": "0.1.x",
+    "underscore": "1.5.x",
+    "backbone": "1.0.x",
+    "chai": "1.7.x",
+    "cheerio": "0.12.x",
+    "jsdom": "0.8.x",
+    "mocha": "1.12.x"
   }
 }
