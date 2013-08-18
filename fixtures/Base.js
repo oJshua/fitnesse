@@ -30,6 +30,11 @@ _.extend(Base.prototype, Backbone.Events, {
   },
   getRowCount: function() {
     return this._table.find('tr').length-1;
+  },
+  _camelize: function(str) {
+    return str.toLowerCase().replace(/[\s]+(.)/g, function(match, group) {
+      return group.toUpperCase();
+    });
   }
 });
 
