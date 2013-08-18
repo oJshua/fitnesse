@@ -17,6 +17,9 @@
     "chai": "1.7.x",
     "cheerio": "0.12.x",
     "jsdom": "0.8.x",
-    "mocha": "1.12.x"
+    "mocha": "1.12.x",
+    "levelup": "0.13.x",
+    "express3-handlebars": "0.5.x",
+    "leveldown": "0.7.x"
   }
 }

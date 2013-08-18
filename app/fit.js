@@ -10,7 +10,6 @@ function execute(wiki, callback) {
   var start = new Date();
   processTables($, function finalize(err, tables, fixtures) {
     var stop = new Date();
-    var html = $.html();
 
     var finalResults = {
       passed: $('.passed').length,
@@ -27,6 +26,8 @@ function execute(wiki, callback) {
       fixture.finalize(finalResults);
     });
 
+    var html = $.html();
+
     callback(null, html, fixtures);
   });
 }
@@ -39,7 +40,9 @@ function processTables($, callback) {
   async.forEachSeries(tables, function(table, cb) {
 
     processTable($, $(table), function(err, fixture) {
-      fixtures.push(fixture);
+      if (fixture) {
+        fixtures.push(fixture);
+      }
       cb(null);
     });
 

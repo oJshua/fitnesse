@@ -14,7 +14,7 @@ var SummaryFixture = Base.extend({
       trh.append(th);
 
       var td = $('<td>');
-      td.text( results[col] );
+      td.text( results[col] || '0' );
       trr.append(td);
     });
 
@@ -23,7 +23,9 @@ var SummaryFixture = Base.extend({
 
     var tr = $('<tr>');
     var td = $('<td>');
-    td.text(results.elapsed + 'ms');
+    td.text('Elapsed time: ' + results.elapsed + 'ms');
+    td.attr('colspan', '5');
+    tr.append(td);
 
     this._table.append(tr);
   }

@@ -28,7 +28,7 @@ Some Wiki Test
 ***/});
 
     var results = fit.execute(wiki, function(err, results, fixtures) {
-      var $ = cheerio.load(results);
+      var $ = cheerio.load(results);      
       var fixture = fixtures[3];
       assert.equal(fixture.getRowCount(), 3);
       done();

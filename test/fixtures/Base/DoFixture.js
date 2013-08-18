@@ -18,10 +18,8 @@ DoFixture Test
 
     var results = fit.execute(wiki, function(err, results) {
       var $ = cheerio.load(results);
-
       assert.equal($('tr.passed').length, 2, 'two passed');
       assert.equal($('tr.failed').length, 0);
-
       done();
     });
   });
