@@ -7,8 +7,27 @@ function execute(wiki, callback) {
   
   var $ = cheerio.load(html);
 
-  processTables($, function(err, tables, fixtures) {
-    callback(null, $.html(), fixtures);
+  var start = new Date();
+  processTables($, function finalize(err, tables, fixtures) {
+    var stop = new Date();
+    var html = $.html();
+
+    var finalResults = {
+      passed: $('.passed').length,
+      failed: $('.failed').length,
+      ignored: $('.ignored').length,
+      exceptions: $('.exception').length,
+      fixtures: fixtures.length,
+      begin: start.getTime(),
+      finish: stop.getTime(),
+      elapsed: stop.getTime() - start.getTime()
+    };
+
+    fixtures.forEach(function(fixture) {
+      fixture.finalize(finalResults);
+    });
+
+    callback(null, html, fixtures);
   });
 }
 

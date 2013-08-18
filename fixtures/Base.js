@@ -24,6 +24,12 @@ _.extend(Base.prototype, Backbone.Events, {
   },
   getText: function(row, column) {
     return this.getCell(row, column).text();
+  },
+  finalize: function(finalResults) {
+    //console.log(finalResults);
+  },
+  getRowCount: function() {
+    return this._table.find('tr').length-1;
   }
 });
 
