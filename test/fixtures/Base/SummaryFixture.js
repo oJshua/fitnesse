@@ -4,7 +4,7 @@ var fit = require('app/fit');
 var cheerio = require('cheerio');
 
 suite('summary fixture', function() {
-  test('summary action', function(done) {
+  test('three rows of summary', function(done) {
 
     var wiki = M(function(){/***
 Some Wiki Test
