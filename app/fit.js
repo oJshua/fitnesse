@@ -7,23 +7,25 @@ function execute(wiki, callback) {
   
   var $ = cheerio.load(html);
 
-  //console.log(html);
-
-  processTables($, function() {
-    callback(null, $.html());
+  processTables($, function(err, tables, fixtures) {
+    callback(null, $.html(), fixtures);
   });
 }
 
 function processTables($, callback) {
 
   var tables = $('table').toArray();
+  var fixtures = [];
 
   async.forEachSeries(tables, function(table, cb) {
 
-    processTable($, $(table), cb);
+    processTable($, $(table), function(err, fixture) {
+      fixtures.push(fixture);
+      cb(null);
+    });
 
   }, function() {
-    callback();
+    callback(null, tables, fixtures);
   });
 }
 
@@ -45,7 +47,9 @@ function processTable($, table, callback) {
     table: table
   });
 
-  fixture.execute(callback);
+  fixture.execute(function(err) {
+    callback(err, fixture);
+  });
 }
 
 function loadFixture(name, fixture) {

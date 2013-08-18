@@ -11,8 +11,19 @@ _.extend(Base.prototype, Backbone.Events, {
     this.$ = options.$;
   },
   execute: function(callback) {
-    console.log('EXECUTE TABLE');
     callback(null);
+  },
+  getCell: function(row, column) {
+    return this._table.children().eq(row).children().eq(column);
+  },
+  right: function(row, column) {
+    this.getCell(row, column).addClass('passed');
+  },
+  wrong: function(row, column, actualValue) {
+    this.getCell(row, column).addClass('failed').attr('data-actual', actualValue);
+  },
+  getText: function(row, column) {
+    return this.getCell(row, column).text();
   }
 });
 
