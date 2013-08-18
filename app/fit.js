@@ -1,6 +1,7 @@
 var creole    = require('app/creole');
 var cheerio   = require('cheerio');
 var async     = require('async');
+var bootstrap = require('app/bootstrapize');
 
 function execute(wiki, callback) {
   var html = creole.parse(wiki);
@@ -25,6 +26,8 @@ function execute(wiki, callback) {
     fixtures.forEach(function(fixture) {
       fixture.finalize(finalResults);
     });
+
+    bootstrap($);
 
     var html = $.html();
 
@@ -60,6 +63,7 @@ function processTable($, table, callback) {
     return callback(null);
   }
 
+  table.attr('data-fixture-name', fixtureName);
   firstColumn.closest('tr').addClass('hidden');
 
   var Fixture = loadFixture(fixtureName);

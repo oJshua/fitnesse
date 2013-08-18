@@ -1,20 +1,8 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
-
-.hidden {
-  display: none;
-}
-
-.passed {
-  background: green;
-}
-
-.failed {
-  background: red;
-}
+@import 'bootstrap.css';
+body{padding:50px;font:14px "Lucida Grande",Helvetica,Arial,sans-serif}
+a{color:#00b7ff}
+.hidden{display:none}
+.passed{background:#dff0d8}
+.failed{background:#f2dede}
+table{margin-bottom:100px}
+textarea{width:80%;height:200px;overflow:auto}
